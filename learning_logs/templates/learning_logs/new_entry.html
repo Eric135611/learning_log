@@ -1,0 +1,19 @@
+{% extends "learning_logs/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block header %}
+  <p>
+    <h3><a href="{% url 'learning_logs:topic' topic.id %}" >{{ topic }}</a></h3>
+  </p>
+{% endblock header %}
+
+{% block content %}
+  <form action="{% url 'learning_logs:new_entry' topic.id %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    
+    <div class="form-group">
+      <button name="submit" class="btn btn-primary">add entry</button>
+    </div>
+  </form>
+{% endblock content %}

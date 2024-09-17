@@ -1,0 +1,33 @@
+{% extends 'learning_logs/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block header %}
+  <h2>{{ topic }} </h2>
+{% endblock header %}
+
+{% block content %}
+  <p>
+    <a href="{% url 'learning_logs:new_entry' topic.id %}">add new_entry</a>
+  </p>
+
+  {% for entry in entries %}
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">
+        {{ entry.date_added|date:'M d,Y H:i' }}
+        <small class="text-muted">
+          <a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a>
+        </small>
+      </h3>
+    </div>
+    
+    <div class="card-body">
+      {{ entry.text|linebreaks }}
+    </div>
+  </div>
+      
+  {% empty %}
+   There are no entries for this topic yet.
+  {% endfor %}
+
+{% endblock content %}

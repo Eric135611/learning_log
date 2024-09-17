@@ -1,0 +1,20 @@
+{% extends 'learning_logs/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block header %}
+    <h2>Register a new account.</h2>
+{% endblock header %}
+
+{% block content %}
+    <form method="post" action="{% url 'users:register' %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <div class="form-group">
+            <button name="submit" class="btn btn-primary">register</button>
+        </div>
+ 
+        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+    </form>
+
+{% endblock content %}

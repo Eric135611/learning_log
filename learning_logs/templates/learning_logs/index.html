@@ -1,0 +1,29 @@
+{% extends "learning_logs/base.html" %}
+
+{% block header %}
+    <div class="card bg-light text-dark">
+        <div class="card-body">
+            <h1 class="card-title">Track your learning.</h1>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+    <h3>
+        <a href="{% url 'users:register' %}">Register an account</a> to make 
+        your own Learning Log, and list the topics you're learning about.
+    </h3>
+    </div>
+
+    <div class="card-header">
+    <h3>
+        <p>
+            Whenever you learn something new about a topic, make an entry 
+            summarizing what you've learned.
+        </p>
+    </h3>
+    </div>
+</div>
+{% endblock content %}
